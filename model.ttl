@@ -1,0 +1,161 @@
+@prefix : <http://test.linked.data.gov.au/def/asgs2016lite#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://test.linked.data.gov.au/def/asgs2016lite> .
+
+<http://test.linked.data.gov.au/def/asgs2016lite> rdf:type owl:Ontology ;
+                                                   owl:versionIRI <http://test.linked.data.gov.au/def/asgs2016lite/1.0> ;
+                                     <http://purl.org/dc/elements/1.1/creator> "Nicholas J. Car" ;
+                                     <http://purl.org/dc/terms/publisher> <http://www.csiro.au> ;
+                                     <http://purl.org/dc/terms/created> "2018-11-12"^^xsd:date ;
+                                     <http://purl.org/dc/elements/1.1/publisher> "CSIRO" ;
+                                     <http://purl.org/dc/terms/creator> <http://orcid.org/0000-0002-8742-7730> ;
+                                     <http://purl.org/dc/terms/modified> "2018-11-12"^^xsd:date ;
+                                                   rdfs:comment """This ontology is a lightweight [Web Ontology Language (OWL)](https://www.w3.org/OWL/), v2, representation of the structure of the [Australian Bureau of Statistics (ABS)](http://www.abs.gov.au)'s 2016 version of their [Australian Statistical Geography Standard (ASGS)](http://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(ASGS)) product.
+
+This ontology is based entirely on the structure of the 2016 ASGS as delivered by the ABS's public collection of [Web Feature Services (WFS)](http://www.opengeospatial.org/standards/wfs) that provides access to all of the dataset's parts. The listing of all of the various web services is:
+
+* <https://geo.abs.gov.au/arcgis/rest/services/ASGS2016>
+
+The *GetCapabilities* endpoint of the Mesh Blocks WFS is:
+
+* <https://geo.abs.gov.au/arcgis/services/ASGS2016/MB/MapServer/WFSServer?service=wfs&version=2.0.0&request=GetCapabilities>
+
+...and there are similar endpoints for each WFS.
+
+
+## Purpose
+This ontology has been developed to assist with delivering ASGS 2016 content as Linked Data for the LOC-I project, an Australian government project by [CSIRO](http://csiro.au), the [ABS](http://www.abs.gov.au) and [Geoscience Australia](http://www.ga.gov.au).
+
+Data delivered according to this ontology is planned to be delivered via an online API that is not yet publicly available."""@en ;
+                                                   rdfs:label "ASGS 2016 Lite Ontology" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://test.linked.data.gov.au/def/asgs2016lite#hasArea
+:hasArea rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.opengis.net/ont/geosparql#hasGeometry> ;
+         rdfs:range :Area ;
+         rdfs:comment "This porperty indicates both an Observed Property (per SOSA) of something and also a specialised Geometry of a Feature (per GeoSPARQL). The spcialised Geometry class Area is given in this ontology and is the required range value for this property."@en ;
+         rdfs:label "has area" .
+
+
+###  http://www.opengis.net/ont/geosparql#hasGeometry
+<http://www.opengis.net/ont/geosparql#hasGeometry> rdf:type owl:ObjectProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#sfWithin
+<http://www.opengis.net/ont/geosparql#sfWithin> rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://test.linked.data.gov.au/def/asgs2016lite#ASGSFeature
+:ASGSFeature rdf:type owl:Class ;
+             rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Feature> .
+
+
+###  http://test.linked.data.gov.au/def/asgs2016lite#AUS
+:AUS rdf:type owl:Class ;
+     rdfs:subClassOf :ASGSFeature ;
+     rdfs:label "Australia" .
+
+
+###  http://test.linked.data.gov.au/def/asgs2016lite#Area
+:Area rdf:type owl:Class ;
+      rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Geometry> ,
+                      <http://www.w3.org/ns/sosa/ObservableProperty> ;
+      rdfs:label "Area" .
+
+
+###  http://test.linked.data.gov.au/def/asgs2016lite#MB
+:MB rdf:type owl:Class ;
+    rdfs:subClassOf :ASGSFeature ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty <http://www.opengis.net/ont/geosparql#sfWithin> ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                      owl:onClass :SA1
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty <http://www.opengis.net/ont/geosparql#sfWithin> ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                      owl:onClass :STATE
+                    ] ;
+    rdfs:label "Mesh Block" .
+
+
+###  http://test.linked.data.gov.au/def/asgs2016lite#SA1
+:SA1 rdf:type owl:Class ;
+     rdfs:subClassOf :ASGSFeature ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty <http://www.opengis.net/ont/geosparql#sfWithin> ;
+                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass :SA2
+                     ] ;
+     rdfs:label "Statistical Area 1" .
+
+
+###  http://test.linked.data.gov.au/def/asgs2016lite#SA2
+:SA2 rdf:type owl:Class ;
+     rdfs:subClassOf :ASGSFeature ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty <http://www.opengis.net/ont/geosparql#sfWithin> ;
+                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass :SA3
+                     ] ;
+     rdfs:label "Statistical Area 2" .
+
+
+###  http://test.linked.data.gov.au/def/asgs2016lite#SA3
+:SA3 rdf:type owl:Class ;
+     rdfs:subClassOf :ASGSFeature ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty <http://www.opengis.net/ont/geosparql#sfWithin> ;
+                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass :SA4
+                     ] ;
+     rdfs:label "Statistical Area 3" .
+
+
+###  http://test.linked.data.gov.au/def/asgs2016lite#SA4
+:SA4 rdf:type owl:Class ;
+     rdfs:subClassOf :ASGSFeature ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty <http://www.opengis.net/ont/geosparql#sfWithin> ;
+                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass :STATE
+                     ] ;
+     rdfs:label "Statistical Area 4" .
+
+
+###  http://test.linked.data.gov.au/def/asgs2016lite#STATE
+:STATE rdf:type owl:Class ;
+       rdfs:subClassOf :ASGSFeature ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty <http://www.opengis.net/ont/geosparql#sfWithin> ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :AUS
+                       ] ;
+       rdfs:label "State and Territory" .
+
+
+###  http://www.opengis.net/ont/geosparql#Feature
+<http://www.opengis.net/ont/geosparql#Feature> rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/geosparql#Geometry
+<http://www.opengis.net/ont/geosparql#Geometry> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/sosa/ObservableProperty
+<http://www.w3.org/ns/sosa/ObservableProperty> rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
