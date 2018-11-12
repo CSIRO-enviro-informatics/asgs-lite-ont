@@ -12,6 +12,10 @@ The *GetCapabilities* endpoint of the Mesh Blocks WFS is:
 ...and there are similar endpoints for each WFS.
 
 
+## Ontology files
+Currently there is only one content file for this ontology: [model.ttl](model.ttl), which encodes this ontology in RDF (turtle). 
+
+
 ## Purpose
 This ontology has been developed to assist with delivering ASGS 2016 content as Linked Data for the LOC-I project, an Australian government project by [CSIRO](http://csiro.au), the [ABS](http://www.abs.gov.au) and [Geoscience Australia](http://www.ga.gov.au).
 
