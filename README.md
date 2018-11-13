@@ -11,9 +11,11 @@ The *GetCapabilities* endpoint of the Mesh Blocks WFS is:
 
 ...and there are similar endpoints for each WFS.
 
+!(model.png)
+Figure 1: An OWL diagram of this ASGS Lite Ontology model.
 
 ## Ontology files
-Currently there is only one content file for this ontology: [model.ttl](model.ttl), which encodes this ontology in RDF (turtle). 
+Currently there is only one content file for this ontology: [model.ttl](model.ttl), which encodes this ontology in RDF (turtle). Supporting this is the diagram file [model.png](model.png) shown above.
 
 
 ## Purpose
