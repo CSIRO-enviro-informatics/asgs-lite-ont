@@ -11,7 +11,7 @@ The *GetCapabilities* endpoint of the Mesh Blocks WFS is:
 
 ...and there are similar endpoints for each WFS.
 
-![](model.png)
+<img src="model.png" width="50%"/>  
 Figure 1: An OWL diagram of this ASGS Lite Ontology model.
 
 ## Ontology files
