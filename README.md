@@ -1,4 +1,6 @@
 # ASGS 2016 Lite Ontology
+**NOTE: this ontology is superseded by the [official ASGS Ontology](http://linked.data.gov.au/def/asgs#) ([GitHub repository](https://github.com/AGLDWG/asgs-ont))**
+
 This ontology is a lightweight [Web Ontology Language (OWL)](https://www.w3.org/OWL/), v2, representation of the structure of the [Australian Bureau of Statistics (ABS)](http://www.abs.gov.au)'s 2016 version of their [Australian Statistical Geography Standard (ASGS)](http://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(ASGS)) product.
 
 This ontology is based entirely on the structure of the 2016 ASGS as delivered by the ABS's public collection of [Web Feature Services (WFS)](http://www.opengeospatial.org/standards/wfs) that provides access to all of the dataset's parts. The listing of all of the various web services is:
