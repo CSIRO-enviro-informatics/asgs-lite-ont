@@ -8,6 +8,8 @@
 
 <http://test.linked.data.gov.au/def/asgs2016lite> rdf:type owl:Ontology ;
                                                    owl:versionIRI <http://test.linked.data.gov.au/def/asgs2016lite/1.0> ;
+                                                   owl:deprecated "true"^^xsd:boolean ; 
+                                     <http://purl.org/dc/elements/1.1/replacedBy> <http://www.linked.data.gov.au/def/asgs/> ;
                                      <http://purl.org/dc/elements/1.1/creator> "Nicholas J. Car" ;
                                      <http://purl.org/dc/terms/publisher> <http://www.csiro.au> ;
                                      <http://purl.org/dc/terms/created> "2018-11-12"^^xsd:date ;
